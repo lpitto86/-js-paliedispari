@@ -22,3 +22,36 @@ function checkPalindromo() {
       const reversedWord = cleanedWord.split('').reverse().join('');
       return cleanedWord === reversedWord;
   }
+
+  function playGame() {
+      const userInputElement = document.getElementById('userInput');
+      const resultElement = document.getElementById('result');
+  
+      // Ottieni il numero inserito dall'utente
+      const userNumber = parseInt(userInputElement.value);
+  
+      // Verifica se il numero è compreso tra 1 e 5
+      if (userNumber >= 1 && userNumber <= 5) {
+          // Genera un numero casuale da 1 a 5 per il computer
+          const computerNumber = generateRandomNumber();
+  
+          // Mostra i numeri e determina il vincitore
+          resultElement.textContent = `Il tuo numero: ${userNumber}\nNumero del computer: ${computerNumber}\n${determineWinner(userNumber, computerNumber)}`;
+      } else {
+          resultElement.textContent = 'Inserisci un numero compreso tra 1 e 5.';
+      }
+  }
+  
+  // Funzione per generare un numero casuale da 1 a 5
+  function generateRandomNumber() {
+      return Math.floor(Math.random() * 5) + 1;
+  }
+  
+  // Funzione per determinare il vincitore
+  function determineWinner(userNumber, computerNumber) {
+      if (userNumber === computerNumber) {
+          return 'Hai indovinato! Hai vinto!';
+      } else {
+          return 'Mi dispiace, hai perso. Prova di nuovo!';
+      }
+  }
