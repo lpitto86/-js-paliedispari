@@ -35,8 +35,14 @@ function checkPalindromo() {
           // Genera un numero casuale da 1 a 5 per il computer
           const computerNumber = generateRandomNumber();
   
-          // Mostra i numeri e determina il vincitore
-          resultElement.textContent = `Il tuo numero: ${userNumber}\nNumero del computer: ${computerNumber}\n${determineWinner(userNumber, computerNumber)}`;
+          // Somma i due numeri
+          const sum = userNumber + computerNumber;
+  
+          // Determina se la somma è pari o dispari
+          const isSumEven = isEven(sum);
+  
+          // Mostra i numeri e se la somma è pari o dispari
+          resultElement.textContent = `Il tuo numero: ${userNumber}\nNumero del computer: ${computerNumber}\nSomma: ${sum}\n${isSumEven ? 'La somma è pari!' : 'La somma è dispari!'}`;
       } else {
           resultElement.textContent = 'Inserisci un numero compreso tra 1 e 5.';
       }
@@ -47,11 +53,7 @@ function checkPalindromo() {
       return Math.floor(Math.random() * 5) + 1;
   }
   
-  // Funzione per determinare il vincitore
-  function determineWinner(userNumber, computerNumber) {
-      if (userNumber === computerNumber) {
-          return 'Hai indovinato! Hai vinto!';
-      } else {
-          return 'Mi dispiace, hai perso. Prova di nuovo!';
-      }
+  // Funzione per determinare se un numero è pari o dispari
+  function isEven(number) {
+      return number % 2 === 0;
   }
